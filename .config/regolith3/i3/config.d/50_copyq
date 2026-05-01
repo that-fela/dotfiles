@@ -1,0 +1,3 @@
+exec copyq --start-server && sleep 1 && copyq hide
+bindsym $mod+v exec copyq menu
+

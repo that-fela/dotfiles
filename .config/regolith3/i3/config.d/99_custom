@@ -1,0 +1,3 @@
+bindsym F12 scratchpad show
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui
+

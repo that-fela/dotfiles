@@ -1,0 +1,129 @@
+" Commands here: https://jb.gg/h38q75
+" Examples here: https://jb.gg/share-ideavimrc
+" View available actions using `:actionlist`
+
+"" Map leader to space
+let mapleader=" "
+
+" Use system clipboard
+set clipboard=unnamedplus
+
+" Show line numbers and relative numbers
+set number
+set relativenumber
+
+" Split behavior
+set splitright
+set splitbelow
+
+" Search behavior
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch!
+nnoremap <Esc> :nohlsearch<CR><Esc>
+
+" Display options
+set wrap!
+set showmode
+set scrolloff=8
+set cursorline
+
+" Disable space in normal/visual mode to avoid conflicts
+nmap <leader> <Nop>
+vmap <leader> <Nop>
+
+" Save file
+nmap <C-S> :w<CR>
+vmap <C-S> :w<CR>
+
+" Yank/paste using clipboard (system register)
+nmap <leader>y "0y
+nmap <leader>Y "0Y
+nmap <leader>p "0p
+nmap <leader>P "0P
+vmap <leader>y "0y
+vmap p "_dp
+vmap P "_dP
+vmap <leader>p "_d"0P
+
+" Center search results
+nmap n nzzzv
+nmap N Nzzzv
+nmap <C-U> <C-U>zz
+nmap <C-D> <C-D>zz
+
+" Move lines up/down in visual mode
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '<-2<CR>gv=gv
+
+" Run / Clean
+nmap <leader>rr :action Run<CR>
+nmap <leader>rc :action ChooseRunConfiguration<CR>
+nmap <leader>rt :action RunConfiguration='All CTest'<CR>
+nmap <leader>rb :action BuildProject<CR>
+nmap <leader>cb :action CMake.CleanBuildDirsAndReload \| action BuildProject<CR>
+nmap <leader>cc :action CMake.ClearCacheAndReload \| action BuildProject<CR>
+
+" Restart IDE
+map <leader>R :action RestartIde<CR>
+
+" Go to declaration/definition
+nmap gD :action GotoImplementation<CR>
+nmap gh :action SwitchHeaderSource<CR>
+nmap gr :action FindUsages<CR>
+
+" Refactoring
+xnoremap <leader>r y/\V<C-R>"<CR>Ncgn
+nmap <leader>rn  :action RenameElement<CR>
+nmap <leader>ng  :action FixDocComment<CR>
+nmap <leader>ca :action ShowIntentionActions<CR>
+map <leader>fm :action ReformatCode<CR>
+
+" Inspections
+nmap K :action ShowErrorDescription \| action ShowHoverInfo <CR>
+
+" Search/project navigation
+nmap <leader>sg :action FindInPath<CR>
+nmap <leader>sf :action GotoFile<CR>
+nmap <leader>sb :action Switcher<CR>
+nmap <leader>st :action QuickChangeScheme<CR>
+nmap <leader>ss :action FileStructurePopup<CR>
+nmap <leader>fb :action ActivateProjectToolWindow<CR>
+nmap <leader>fh :action HideActiveWindow<CR>
+
+" Debugging
+nnoremap <leader>dk :action Debug<CR>
+nnoremap <leader>dq :action Stop<CR>
+nnoremap <leader>dl :action RunClass<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+nnoremap <leader>dr :action DebugConsole<CR>
+nnoremap <leader>db :action ViewBreakpoints<CR>
+nnoremap <leader>dc :action RunToCursor<CR>
+nnoremap <leader>di :action StepInto<CR>
+nnoremap <leader>do :action StepOut<CR>
+nnoremap <leader>n :action StepOver<CR>
+nnoremap <leader>dp :action Pause<CR>
+nnoremap <leader>de :action EditSource<CR>
+nnoremap <leader>dw :action QuickEvaluateExpression<CR>
+
+" Splits and navigation
+nmap <C-a>v :vsplit<CR>
+nmap <C-a>h :split<CR>
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+" Change surroundings i.e: cs'"
+Plug 'tpope/vim-surround'
+ 
